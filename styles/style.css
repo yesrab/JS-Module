@@ -13,6 +13,9 @@
   --rule-box-height: 90%;
   --HUD-font-size: 1vw;
   --window-height: 65vh;
+  --triangle-edges: 15vw;
+  --angle-offset: calc(var(--triangle-edges) - 0.25rem);
+  --triangle-border-offset: calc(var(--angle-offset) - 2rem);
 }
 
 body {
@@ -72,18 +75,46 @@ div > span {
   justify-content: center;
   align-items: center;
   height: calc(var(--window-height) / 1);
+  background-color: inherit;
   width: auto;
 }
 .playercontrolls {
-  /* display: inline-block; */
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin-top: 2vh;
   width: calc(var(--header-width) / 1);
   height: calc(var(--window-height) / 1);
-  background-color: powderblue;
+  /* background-color: inherit; */
+  /* background-color: powderblue; */
+}
+/* an atempt to make an triangle */
+
+.triangle {
+  box-sizing: content-box;
+  width: 0px;
+  height: 0px;
+  /* background-color: yellow; */
+  border-left: var(--angle-offset) solid transparent;
+  border-right: var(--angle-offset) solid transparent;
+  border-top: var(--triangle-edges) solid #324723;
+  position: relative;
+}
+.triangle::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  /* background-color: yellow; */
+  border-left: var(--triangle-border-offset) solid transparent;
+  border-right: var(--triangle-border-offset) solid transparent;
+  border-top: calc(var(--triangle-edges) - 2rem) solid var(--main-bag-color);
+  position: absolute;
+  left: calc(-1 * var(--triangle-border-offset));
+  top: calc(-1 * var(--triangle-edges) + 0.9rem);
 }
 
 /* rules window css */
