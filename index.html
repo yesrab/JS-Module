@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROCK PAPER SCISSORS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <label class="gameTitle">ROCK</label>
+        <label class="gameTitle">PAPER</label>
+        <label class="gameTitle">SCISSORS</label>
+      </div>
+      <div>
+        <div class="scoreCards">
+          <span><lable>COMPUTER</lable> <label>SCORE</label></span>
+          <label class="scoreValues">0</label>
+        </div>
+        <div class="scoreCards">
+          <label>YOUR SCORE</label>
+          <label class="scoreValues">0</label>
+        </div>
+      </div>
+    </header>
+    <div class="playGround">
+      <div class="playercontrolls">placholder</div>
+      <div id="rules" class="rulesWindow">
+        <div onclick="exitRules()" class="crossBtn">
+          <button>X</button>
+        </div>
+        <div class="ruleBox">
+          <label>Game Rules</label>
+          <ul>
+            <li>
+              Rock beats scissors, scissors beat paper, and paper beats rock.
+            </li>
+            <li>
+              Agree ahead of time whether you’ll count off “rock, paper,
+              scissors, shoot” or just “rock, paper, scissors.”
+            </li>
+            <li>
+              Use rock, paper, scissors to settle minor decisions or simply play
+              to pass the time
+            </li>
+            <li>
+              If both players lay down the same hand, each player lays down
+              another hand
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <button onclick="openRules()" id="ruleBtn">RULES</button>
+      <button onclick="placeholder()" id="nxtBtn">NEXT</button>
+    </footer>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
