@@ -12,6 +12,7 @@
   --header-width: 60vw;
   --rule-box-height: 90%;
   --HUD-font-size: 1vw;
+  --window-height: 65vh;
 }
 
 body {
@@ -70,7 +71,7 @@ div > span {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(var(--header-width) / 2.1);
+  height: calc(var(--window-height) / 1);
   width: auto;
 }
 .playercontrolls {
@@ -79,9 +80,9 @@ div > span {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 5vh;
+  margin-top: 2vh;
   width: calc(var(--header-width) / 1);
-  height: calc(var(--header-width) / 2);
+  height: calc(var(--window-height) / 1);
   background-color: powderblue;
 }
 
