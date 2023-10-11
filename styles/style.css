@@ -14,8 +14,13 @@
   --HUD-font-size: 1vw;
   --window-height: 65vh;
   --triangle-edges: 15vw;
-  --angle-offset: calc(var(--triangle-edges) - 0.25rem);
-  --triangle-border-offset: calc(var(--angle-offset) - 2rem);
+  --angle-adjust: 0.25vw;
+  --angle-offset: calc(var(--triangle-edges) - (var(--angle-adjust)));
+  --triangle-border-offset: calc(
+    var(--triangle-edges) - (var(--angle-adjust) + 2rem)
+  );
+  --controll-resize-index: 1;
+  --controls-width: calc(10vw * var(--controll-resize-index));
 }
 
 body {
@@ -98,7 +103,6 @@ div > span {
   box-sizing: content-box;
   width: 0px;
   height: 0px;
-  /* background-color: yellow; */
   border-left: var(--angle-offset) solid transparent;
   border-right: var(--angle-offset) solid transparent;
   border-top: var(--triangle-edges) solid #324723;
@@ -108,7 +112,6 @@ div > span {
   content: "";
   width: 0px;
   height: 0px;
-  /* background-color: yellow; */
   border-left: var(--triangle-border-offset) solid transparent;
   border-right: var(--triangle-border-offset) solid transparent;
   border-top: calc(var(--triangle-edges) - 2rem) solid var(--main-bag-color);
@@ -210,4 +213,41 @@ footer button {
 }
 #nxtBtn {
   display: inline;
+}
+
+.playerOptionsContainer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 2vh;
+  width: calc(var(--header-width) / 1);
+  height: calc(var(--window-height) / 1);
+}
+.playerOptions {
+  width: var(--controls-width);
+  aspect-ratio: 1/1;
+}
+#rock {
+  display: block;
+  position: relative;
+  left: calc((var(--triangle-edges) * -1) + var(--controls-width));
+  top: calc(var(--triangle-edges) * (-0.5));
+  background-color: blue;
+}
+#scissor {
+  display: block;
+  position: relative;
+  left: calc(var(--triangle-edges) - var(--controls-width));
+  top: calc(var(--triangle-edges) * (-0.5));
+  background-color: yellow;
+}
+#paper {
+  display: block;
+  position: relative;
+  background-color: pink;
+  top: calc(var(--triangle-edges) * (0.5));
 }
