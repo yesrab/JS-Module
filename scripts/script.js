@@ -2,7 +2,8 @@
 console.log("Test");
 import { play } from "./htmlElements.js";
 import { playerResult } from "./htmlElements.js";
-
+import { nextBtn } from "./htmlElements.js";
+import { ruleBox } from "./htmlElements.js";
 const buttons = [
   document.getElementById("imageRock"),
   document.getElementById("imageScissor"),
@@ -35,6 +36,11 @@ buttons.forEach((button) => {
         toggleRules();
         break;
       }
+      case "nxtBtn": {
+        nextBtn();
+        console.log("next button");
+        break;
+      }
     }
   });
 });
@@ -61,15 +67,15 @@ function playButton(buttonid) {
 function append(arr) {
   console.log("append happned");
   console.log(arr);
-  if (arr[2] == "YOU LOST" || arr[2] == "TIE UP") {
-    buttons[4].style.display = "none";
+  if (arr[2] == "YOU WIN") {
+    buttons[4].style.display = "inline";
   }
   const winScreen = new playerResult(arr[0], arr[1], arr[2]);
   console.log(winScreen);
   const element = document.getElementById("mark");
   element.remove();
   const play = document.getElementById("append");
-  play.innerHTML = winScreen.createWinnerScreen() + winScreen.ruleElement;
+  play.innerHTML = winScreen.createWinnerScreen() + ruleBox.ruleElement;
 
   //change images in the selections to the appropriate player and computer sellections
 

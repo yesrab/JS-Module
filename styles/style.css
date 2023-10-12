@@ -85,9 +85,9 @@ div > span {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(var(--window-height) / 1);
+  height: calc(var(--window-height));
   background-color: inherit;
-  width: auto;
+  width: 100vw;
   background-color: inherit;
 }
 .playercontrolls {
@@ -219,7 +219,7 @@ footer button {
   cursor: pointer;
 }
 #nxtBtn {
-  display: inline;
+  display: none;
 }
 
 .playerOptionsContainer {
@@ -396,4 +396,87 @@ footer button {
   font-weight: 600;
   letter-spacing: 0.1rem;
   cursor: pointer;
+}
+.hurray {
+  display: flex;
+  position: relative;
+  margin-top: 7vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+#trophy {
+  scale: 0.8;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.hurrayText {
+  color: var(--forground-color);
+  text-align: center;
+  margin: 0.7vw;
+  letter-spacing: 0.2rem;
+}
+#cheer {
+  font-size: 4rem;
+}
+#cheerChild {
+  margin: 0.3vw;
+  font-size: 2rem;
+}
+.stars {
+  position: absolute;
+  align-items: center;
+  animation: breath 2s linear infinite;
+}
+@keyframes breath {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+#str1 {
+  top: -8vw;
+  left: 0vw;
+  scale: 20%;
+}
+
+#str2 {
+  top: -6vw;
+  left: 5vw;
+  scale: 20%;
+}
+
+#str3 {
+  top: -3vw;
+  left: -3vw;
+  scale: 50%;
+}
+#str4 {
+  top: 3vw;
+  left: -8vw;
+  scale: 70%;
+}
+#str5 {
+  top: 8vw;
+  left: 1vw;
+  scale: 20%;
+}
+#str6 {
+  top: -6vw;
+  left: 17vw;
+  scale: 70%;
+}
+
+#str7 {
+  top: 1vw;
+  left: 20vw;
+  scale: 20%;
+}
+#str8 {
+  top: 6vw;
+  left: 17vw;
+  scale: 70%;
 }
