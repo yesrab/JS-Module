@@ -30,17 +30,23 @@
         </div>
       </div>
     </header>
-    <div class="playGround">
-      <div class="playercontrolls">
+    <div id="append" class="playGround">
+      <div id="mark" class="playercontrolls">
         <div class="triangle"></div>
         <div class="playerOptionsContainer">
-          <div id="rock" class="playerOptions">rock</div>
-          <div id="paper" class="playerOptions">paper</div>
-          <div id="scissor" class="playerOptions">Scissor</div>
+          <div id="rock" class="playerOptions">
+            <div id="imageRock" class="whitecircle"></div>
+          </div>
+          <div id="paper" class="playerOptions">
+            <div id="imagePaper" class="whitecircle"></div>
+          </div>
+          <div id="scissor" class="playerOptions">
+            <div id="imageScissor" class="whitecircle"></div>
+          </div>
         </div>
       </div>
       <div id="rules" class="rulesWindow">
-        <div onclick="exitRules()" class="crossBtn">
+        <div id="cross" class="crossBtn">
           <button>X</button>
         </div>
         <div class="ruleBox">
@@ -66,9 +72,10 @@
       </div>
     </div>
     <footer>
-      <button onclick="openRules()" id="ruleBtn">RULES</button>
-      <button onclick="placeholder()" id="nxtBtn">NEXT</button>
+      <button id="ruleBtn">RULES</button>
+      <button id="nxtBtn">NEXT</button>
     </footer>
-    <script src="scripts/script.js"></script>
+    <script type="module" src="scripts/script.js"></script>
+    <script type="module" src="scripts/htmlElements.js"></script>
   </body>
 </html>

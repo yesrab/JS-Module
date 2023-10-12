@@ -21,6 +21,12 @@
   );
   --controll-resize-index: 1;
   --controls-width: calc(10vw * var(--controll-resize-index));
+  --rock-img: url(/assets/Rock.png);
+  --scissor-img: url(/assets/Scissor.png);
+  --paper-img: url(/assets/Paper.svg);
+  --color-rock: #0074b6;
+  --color-paper: #ffa943;
+  --color-scissor: #bd00ff;
 }
 
 body {
@@ -82,6 +88,7 @@ div > span {
   height: calc(var(--window-height) / 1);
   background-color: inherit;
   width: auto;
+  background-color: inherit;
 }
 .playercontrolls {
   position: absolute;
@@ -230,24 +237,163 @@ footer button {
 .playerOptions {
   width: var(--controls-width);
   aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.whitecircle {
+  background-color: var(--forground-color);
+  width: 75%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 #rock {
-  display: block;
+  /* display: block; */
   position: relative;
   left: calc((var(--triangle-edges) * -1) + var(--controls-width));
   top: calc(var(--triangle-edges) * (-0.5));
-  background-color: blue;
+  background-color: #0074b6;
+  transition: box-shadow 0.3s;
 }
+
+#rock:hover {
+  box-shadow: 0 0 0 10px rgba(0, 116, 182, 0.4);
+}
+
+#imageRock {
+  background-image: url(/assets/Rock.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center center;
+}
+
 #scissor {
-  display: block;
+  /* display: block; */
   position: relative;
   left: calc(var(--triangle-edges) - var(--controls-width));
   top: calc(var(--triangle-edges) * (-0.5));
-  background-color: yellow;
+  background-color: #bd00ff;
+  transition: box-shadow 0.3s;
 }
+#scissor:hover {
+  box-shadow: 0 0 0 10px rgba(189, 0, 255, 0.4);
+}
+
+#imageScissor {
+  background-image: url(/assets/Scissor.png);
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: center center;
+}
+
 #paper {
-  display: block;
+  /* display: block; */
   position: relative;
-  background-color: pink;
+  background-color: #ffa943;
   top: calc(var(--triangle-edges) * (0.5));
+  transition: box-shadow 0.3s;
+}
+
+#paper:hover {
+  box-shadow: 0 0 0 10px rgba(255, 169, 67, 0.4);
+}
+
+#imagePaper {
+  background-image: url(/assets/Paper.svg);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center center;
+}
+
+/* play window */
+
+.resultWindow {
+  display: flex;
+  height: calc(var(--window-height) / 1);
+  background-color: inherit;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.result {
+  height: 15vw;
+  aspect-ratio: 4/2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.actualResult {
+  color: var(--forground-color);
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+}
+#omit {
+  display: block;
+  font-size: 1.5rem;
+  margin: 1%;
+}
+
+.noAnimation {
+  background-color: white;
+  height: var(--controls-width);
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+.Animation {
+  background-color: white;
+  height: var(--controls-width);
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+
+  animation: helo 5s linear infinite;
+}
+@keyframes helo {
+  0% {
+    box-shadow: 0 0 0 2vw rgba(40, 154, 39, 1),
+      0 0 0 3.5vw rgba(40, 154, 39, 0.5), 0 0 0 4.5vw rgba(40, 154, 39, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 0 4vw rgba(40, 154, 39, 1), 0 0 0 7vw rgba(40, 154, 39, 0.5),
+      0 0 0 9vw rgba(40, 154, 39, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 2vw rgba(40, 154, 39, 1),
+      0 0 0 3.5vw rgba(40, 154, 39, 0.5), 0 0 0 4.5vw rgba(40, 154, 39, 0.1);
+  }
+}
+
+#playerSellection {
+  background-image: var(--rock-img);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center center;
+  border: 20px solid var(--color-rock);
+  margin-left: 5vw;
+}
+#computerSellection {
+  background-image: var(--rock-img);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center center;
+  border: 20px solid var(--color-rock);
+  margin-right: 5vw;
+}
+
+#againBtn {
+  background-color: var(--forground-color);
+  color: #6b6b6b;
+  width: 30%;
+  margin: 5%;
+  aspect-ratio: 22/9;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
 }
