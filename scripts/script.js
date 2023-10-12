@@ -60,8 +60,27 @@ function toggleRules() {
   }
 }
 
+let pcScore = 0;
+let userScore = 0;
+
 function playButton(buttonid) {
-  append(play(buttonid));
+  const result = play(buttonid);
+  if (result[2] == "YOU WIN") {
+    userScore++;
+  } else if (result[2] == "YOU LOST") {
+    pcScore++;
+  }
+  console.log(`computer score ${pcScore} player score ${userScore}`);
+  append(result);
+  updateScores();
+}
+
+function updateScores() {
+  const pcScoreCard = document.getElementById("pcScore");
+  pcScoreCard.innerText = pcScore;
+
+  const userScoreCard = document.getElementById("userScore");
+  userScoreCard.innerText = userScore;
 }
 
 function append(arr) {
@@ -71,7 +90,6 @@ function append(arr) {
     buttons[4].style.display = "inline";
   }
   const winScreen = new playerResult(arr[0], arr[1], arr[2]);
-  console.log(winScreen);
   const element = document.getElementById("mark");
   element.remove();
   const play = document.getElementById("append");
