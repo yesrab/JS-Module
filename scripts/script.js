@@ -59,28 +59,46 @@ function toggleRules() {
     rulesWindow.style.display = "none";
   }
 }
+let currentScore = retriveData();
+console.log(currentScore);
+function retriveData() {
+  const scores = {
+    pcScore: 0,
+    userScore: 0,
+  };
 
-let pcScore = 0;
-let userScore = 0;
+  let currentScore = JSON.parse(localStorage.getItem("scores"));
+  if (!currentScore) {
+    localStorage.setItem("scores", JSON.stringify(scores));
+  }
+  currentScore = JSON.parse(localStorage.getItem("scores"));
+  return currentScore;
+}
+
+updateScores();
 
 function playButton(buttonid) {
   const result = play(buttonid);
   if (result[2] == "YOU WIN") {
-    userScore++;
+    currentScore.userScore++;
   } else if (result[2] == "YOU LOST") {
-    pcScore++;
+    currentScore.pcScore++;
   }
-  console.log(`computer score ${pcScore} player score ${userScore}`);
+  console.log(
+    `computer score ${currentScore.pcScore} player score ${currentScore.userScore}`
+  );
+  localStorage.setItem("scores", JSON.stringify(currentScore));
   append(result);
+
   updateScores();
 }
 
 function updateScores() {
   const pcScoreCard = document.getElementById("pcScore");
-  pcScoreCard.innerText = pcScore;
+  pcScoreCard.innerText = currentScore.pcScore;
 
   const userScoreCard = document.getElementById("userScore");
-  userScoreCard.innerText = userScore;
+  userScoreCard.innerText = currentScore.userScore;
 }
 
 function append(arr) {
