@@ -52,8 +52,8 @@ header > div:nth-child(1) {
   letter-spacing: calc(var(--base-font-size) / 16);
 }
 header > div:nth-child(2) {
-  width: calc(var(--header-width) / 3);
-  height: calc(var(--header-width) / 7);
+  width: 20vw;
+  height: 8vw;
   display: flex;
   justify-content: space-around;
   color: black;
@@ -65,7 +65,8 @@ div > span {
 .scoreCards {
   color: #656565;
   display: flex;
-  aspect-ratio: 139/129;
+  width: 40%;
+  aspect-ratio: 1/2;
   align-items: center;
   justify-content: space-around;
   text-align: center;
