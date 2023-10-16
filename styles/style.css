@@ -121,12 +121,12 @@ div > span {
   content: "";
   width: 0px;
   height: 0px;
-  border-left: var(--triangle-border-offset) solid transparent;
+  border-left: var(--triangle-border-offset) solid transparent; /* offsetted value from the main traingle  */
   border-right: var(--triangle-border-offset) solid transparent;
   border-top: calc(var(--triangle-edges) - 2rem) solid var(--main-bag-color);
   position: absolute;
   left: calc(-1 * var(--triangle-border-offset));
-  top: calc(-1 * var(--triangle-edges) + 0.9rem);
+  top: calc(-1 * var(--triangle-edges) + 1rem);
 }
 
 /* rules window css */
