@@ -1,3 +1,8 @@
+/* A class to create HTML elements for the result 
+takes 3 parameters, pcSelection which is the chosen option by the computer
+playerSelection which is choosen by the user and the winner which is the actual winner
+*/
+
 class playerResult {
   constructor(pcSelection, playerSelection, winner) {
     this.pcSelection = pcSelection;
@@ -9,7 +14,7 @@ class playerResult {
     let playerClass, computerClass;
 
     if (this.winner === "TIE UP") {
-      playerClass = "noAnimation";
+      playerClass = "noAnimation"; // animantion and noanimation classes are css classes to display boxshadow animation on the requires elements
       computerClass = "noAnimation";
     } else {
       playerClass = this.winner === "YOU WIN" ? "Animation" : "noAnimation";
@@ -29,7 +34,9 @@ class playerResult {
   }
 }
 
-const ruleBox = {
+/* here is an object with residual html elemnts which are necessary for few functionality ie, rules and the winner's next page  */
+
+const htmlObj = {
   ruleElement: `<div id="rules" class="rulesWindow">
                    <div id="cross" class="crossBtn">
                     <button>X</button>
@@ -72,8 +79,15 @@ const ruleBox = {
                     </div>`,
 };
 
+/* why are these not inside the class?
+ to maintain functions as global and reusable 
+ the function play initiate the user move and its parameters are the button of what the user picked 
+ this function also calls pickcomputer move which uses Math.random to pic a number between 0 to 1 and these intervals are divided in between the choices of ROCK, PAPER, SCISSORS these choices are then placed in a varable PC and cmpared against the user's move
+ this function ultimately returns an array of [pc choice, user choice, the winner]
+ */
+
 function pickcomputerMove() {
-  const reference = Math.random();
+  const reference = Math.random(); // pick a radom move using math.radom
   let computerMove = "";
   if (reference >= 0 && reference < 1 / 3) {
     computerMove = "imageRock";
@@ -86,18 +100,16 @@ function pickcomputerMove() {
 }
 
 function play(buttonid) {
-  let PC = pickcomputerMove();
+  let PC = pickcomputerMove(); // place the computer move in the variable
   if (PC == buttonid) {
     // console.log("tie");
-    return [PC, buttonid, "TIE UP"];
+    return [PC, buttonid, "TIE UP"]; // check for tie before hand
   } else {
     switch (buttonid) {
       case "imageRock": {
         if (PC == "imageScissor") {
-          // console.log("you win");
           return [PC, buttonid, "YOU WIN"];
         } else {
-          // console.log(" you loose");
           return [PC, buttonid, "YOU LOST"];
         }
         break;
@@ -105,10 +117,8 @@ function play(buttonid) {
 
       case "imagePaper": {
         if (PC == "imageRock") {
-          // console.log("you win");
           return [PC, buttonid, "YOU WIN"];
         } else {
-          // console.log("you loose");
           return [PC, buttonid, "YOU LOST"];
         }
 
@@ -116,10 +126,8 @@ function play(buttonid) {
       }
       case "imageScissor": {
         if (PC == "imagePaper") {
-          // console.log("you win");
           return [PC, buttonid, "YOU WIN"];
         } else {
-          // console.log("you loose");
           return [PC, buttonid, "YOU LOST"];
         }
         break;
@@ -137,11 +145,13 @@ function nextBtn() {
   playarea.remove();
   next.remove();
   const play = document.getElementById("append");
-  play.innerHTML = ruleBox.hurrayElement + ruleBox.ruleElement;
+  play.innerHTML = htmlObj.hurrayElement + htmlObj.ruleElement;
   play.style.height = "calc(var(--window-height) * 1.4)";
 }
+
+// export all the required classes, objects and functions
 
 export { nextBtn };
 export { play };
 export { playerResult };
-export { ruleBox };
+export { htmlObj };

@@ -1,9 +1,9 @@
 "use strict";
-console.log("Test");
-import { play } from "./htmlElements.js";
-import { playerResult } from "./htmlElements.js";
-import { nextBtn } from "./htmlElements.js";
-import { ruleBox } from "./htmlElements.js";
+/* import all the required stuff from the module */
+import { play } from "./htmlElements.js"; // play functon that returns an arrya with [pc choice, user choice, the winner]
+import { playerResult } from "./htmlElements.js"; // playerResult class to create tailored objects for the gui
+import { nextBtn } from "./htmlElements.js"; // function to remove header and playground to add an hurrya page when the player wins
+import { htmlObj } from "./htmlElements.js"; // rulebox element and the hurray element in a object
 const buttons = [
   document.getElementById("imageRock"),
   document.getElementById("imageScissor"),
@@ -44,7 +44,7 @@ buttons.forEach((button) => {
     }
   });
 });
-
+// function to toggle rules from display block and none
 function toggleRules() {
   const crossBtn = document.getElementById("cross");
   crossBtn.addEventListener("click", () => {
@@ -59,14 +59,14 @@ function toggleRules() {
     rulesWindow.style.display = "none";
   }
 }
+// handling and keeping scores in the browser local storage retrival of the data if it already exists and creating it if it doest
 let currentScore = retriveData();
-console.log(currentScore);
 function retriveData() {
   const scores = {
     pcScore: 0,
     userScore: 0,
   };
-
+  // scores cant be stored as an object so they are parsed as string and back
   let currentScore = JSON.parse(localStorage.getItem("scores"));
   if (!currentScore) {
     localStorage.setItem("scores", JSON.stringify(scores));
@@ -76,7 +76,7 @@ function retriveData() {
 }
 
 updateScores();
-
+// play button function is called every time the user clicks on either of the buttons 'ROCK' , 'PAPER' , 'SCISSORS'
 function playButton(buttonid) {
   const result = play(buttonid);
   if (result[2] == "YOU WIN") {
@@ -84,13 +84,10 @@ function playButton(buttonid) {
   } else if (result[2] == "YOU LOST") {
     currentScore.pcScore++;
   }
-  console.log(
-    `computer score ${currentScore.pcScore} player score ${currentScore.userScore}`
-  );
-  localStorage.setItem("scores", JSON.stringify(currentScore));
-  append(result);
+  localStorage.setItem("scores", JSON.stringify(currentScore)); // update score in the local storege
+  append(result); // call the append fuction to perform changes in the DOM
 
-  updateScores();
+  updateScores(); //update the scores in the html element
 }
 
 function updateScores() {
@@ -101,9 +98,12 @@ function updateScores() {
   userScoreCard.innerText = currentScore.userScore;
 }
 
+/*
+this is the main function that appends html elemnts to index.html as per the changes in the gameplay 
+*/
+
 function append(arr) {
-  console.log("append happned");
-  console.log(arr);
+  //take the array returned from the play function
   if (arr[2] == "YOU WIN") {
     buttons[4].style.display = "inline";
   }
@@ -111,13 +111,16 @@ function append(arr) {
   const element = document.getElementById("mark");
   element.remove();
   const play = document.getElementById("append");
-  play.innerHTML = winScreen.createWinnerScreen() + ruleBox.ruleElement;
+  play.innerHTML = winScreen.createWinnerScreen() + htmlObj.ruleElement;
 
   //change images in the selections to the appropriate player and computer sellections
 
   const playerImage = document.getElementById("playerSellection");
   const computerImage = document.getElementById("computerSellection");
   const tieDeletion = document.getElementById("omit");
+
+  // set styling as per result
+
   if (arr[2] == "TIE UP") {
     tieDeletion.style.display = "none";
   }
