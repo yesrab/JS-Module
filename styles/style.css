@@ -14,7 +14,7 @@
   --HUD-font-size: 1vw;
   --window-height: 65vh;
   --triangle-edges: 15vw;
-  --angle-adjust: 0.25vw;
+  --angle-adjust: 0.25vw; /* use this vale to adjust the triangle  */
   --angle-offset: calc(var(--triangle-edges) - (var(--angle-adjust)));
   --triangle-border-offset: calc(
     var(--triangle-edges) - (var(--angle-adjust) + 2rem)
@@ -256,7 +256,7 @@ footer button {
   position: relative;
   left: calc((var(--triangle-edges) * -1) + var(--controls-width));
   top: calc(var(--triangle-edges) * (-0.5));
-  background-color: #0074b6;
+  background-color: var(--color-rock);
   transition: box-shadow 0.3s;
 }
 
@@ -276,7 +276,7 @@ footer button {
   position: relative;
   left: calc(var(--triangle-edges) - var(--controls-width));
   top: calc(var(--triangle-edges) * (-0.5));
-  background-color: #bd00ff;
+  background-color: var(--color-scissor);
   transition: box-shadow 0.3s;
 }
 #scissor:hover {
@@ -293,7 +293,7 @@ footer button {
 #paper {
   /* display: block; */
   position: relative;
-  background-color: #ffa943;
+  background-color: var(--color-paper);
   top: calc(var(--triangle-edges) * (0.5));
   transition: box-shadow 0.3s;
 }
