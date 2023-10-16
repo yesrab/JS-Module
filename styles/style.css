@@ -14,7 +14,7 @@
   --HUD-font-size: 1vw;
   --window-height: 65vh;
   --triangle-edges: 15vw;
-  --angle-adjust: 0.25vw; /* use this vale to adjust the triangle  */
+  --angle-adjust: 3vw; /* use this vale to adjust the triangle  */
   --angle-offset: calc(var(--triangle-edges) - (var(--angle-adjust)));
   --triangle-border-offset: calc(
     var(--triangle-edges) - (var(--angle-adjust) + 2rem)
@@ -104,7 +104,7 @@ div > span {
   /* background-color: inherit; */
   /* background-color: powderblue; */
 }
-/* an atempt to make an triangle */
+/* an atempt to make an triangle using the borders */
 
 .triangle {
   box-sizing: content-box;
@@ -115,6 +115,7 @@ div > span {
   border-top: var(--triangle-edges) solid #324723;
   position: relative;
 }
+/* use the before element to make another triangle and overlay them on top of each other */
 .triangle::before {
   content: "";
   width: 0px;
@@ -254,7 +255,7 @@ footer button {
 #rock {
   /* display: block; */
   position: relative;
-  left: calc((var(--triangle-edges) * -1) + var(--controls-width));
+  left: calc((var(--triangle-edges) * -1) + var(--controls-width) + 2rem);
   top: calc(var(--triangle-edges) * (-0.5));
   background-color: var(--color-rock);
   transition: box-shadow 0.3s;
@@ -274,7 +275,7 @@ footer button {
 #scissor {
   /* display: block; */
   position: relative;
-  left: calc(var(--triangle-edges) - var(--controls-width));
+  left: calc(var(--triangle-edges) - var(--controls-width) - 2rem);
   top: calc(var(--triangle-edges) * (-0.5));
   background-color: var(--color-scissor);
   transition: box-shadow 0.3s;
